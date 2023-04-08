@@ -7,7 +7,16 @@ section {
   padding: 2rem;
   border-radius: 12px;
 }
-
+.loading {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  position: fixed;
+  margin: 2px;
+  padding: 5px;
+  top: 20%;
+  left: 45%;
+}
 button {
   font: inherit;
   cursor: pointer;
