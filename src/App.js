@@ -47,11 +47,8 @@ function App() {
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    fetchMoviesHandler();
-  }, [fetchMoviesHandler]);
-
-  async function addMovieHandler(movie) {
+  
+ const  addMovieHandler= useCallback(async (movie) =>{
     const response = await fetch(
       "https://movie-app-8b082-default-rtdb.firebaseio.com/movies.json",
       {
@@ -64,7 +61,11 @@ function App() {
     );
     const data = await response.json();
     console.log(data);
-  }
+  },[])
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler,addMovieHandler]);
+
   const deleteHandler = async (id) => {
   
     const response = await fetch(
@@ -73,7 +74,7 @@ function App() {
         method: "DELETE",
       }
     );
-    const data = response.json()
+    const data = await response.json()
     console.log(data)
   };
   let content = <p>Found no movies.</p>;
